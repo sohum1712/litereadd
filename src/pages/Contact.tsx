@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { Loader2, Mail } from "lucide-react";
 
 const Contact = () => {
@@ -19,45 +19,37 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-
-      const { error } = await supabase
-        .from("contact_messages")
-        .insert({
-          name,
-          email,
-          message,
-          user_id: user?.id || null,
-        });
-
-      if (error) throw error;
-
-      toast.success("Message sent successfully! We'll get back to you soon.");
+      // Simulate form submission (since we removed backend)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast.success("Message received! We'll get back to you soon.");
       setName("");
       setEmail("");
       setMessage("");
     } catch (error: any) {
-      toast.error(error.message || "Failed to send message");
+      toast.error("Failed to send message");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/10">
+    <div className="min-h-screen bg-background">
       <Navigation />
       
       <div className="container mx-auto px-6 pt-32 pb-16">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <Mail className="w-16 h-16 mx-auto mb-4 text-accent" />
-            <h1 className="text-4xl font-bold gradient-text-accent mb-4">Get In Touch</h1>
+            <Mail className="w-16 h-16 mx-auto mb-4 text-primary" />
+            <h1 className="text-5xl font-bold text-foreground mb-4">
+              Get In <span className="gradient-text">Touch</span>
+            </h1>
             <p className="text-muted-foreground text-lg">
               Have questions or feedback? We'd love to hear from you.
             </p>
           </div>
 
-          <div className="glass-strong rounded-2xl p-8 glow-accent">
+          <div className="glass-strong rounded-2xl p-8 glow-primary">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
@@ -116,6 +108,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

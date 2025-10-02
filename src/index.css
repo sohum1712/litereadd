@@ -8,81 +8,90 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark theme with glassmorphism - purple to blue gradients */
-    --background: 240 10% 5%;
-    --foreground: 210 40% 98%;
+    /* Dark green theme exactly matching reference image */
+    --background: 150 25% 8%;
+    --foreground: 0 0% 98%;
 
-    --card: 240 10% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 150 20% 12%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 150 20% 12%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Purple gradient primary */
-    --primary: 270 60% 60%;
-    --primary-foreground: 210 40% 98%;
+    /* Orange primary color exactly from reference */
+    --primary: 16 100% 50%;
+    --primary-foreground: 0 0% 100%;
     
-    /* Teal/Emerald accent */
-    --accent: 165 75% 50%;
-    --accent-foreground: 240 10% 5%;
+    /* Secondary orange accent */
+    --accent: 16 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --secondary: 240 10% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 150 20% 15%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 5% 20%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 150 15% 18%;
+    --muted-foreground: 150 8% 60%;
 
     --destructive: 0 70% 50%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 20%;
-    --input: 240 10% 15%;
-    --ring: 270 60% 60%;
+    --border: 150 15% 25%;
+    --input: 150 20% 15%;
+    --ring: 16 100% 50%;
 
     --radius: 1rem;
 
     /* Glass effect variables */
-    --glass-bg: 240 10% 10%;
-    --glass-border: 240 10% 25%;
-    --glass-shadow: 270 60% 60%;
+    --glass-bg: 150 20% 12%;
+    --glass-border: 150 15% 25%;
+    --glass-shadow: 16 100% 50%;
   }
 }
 
 @layer utilities {
-  /* Glassmorphism effect */
+  /* Modern card effect matching reference */
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
-    box-shadow: 0 8px 32px 0 rgba(120, 80, 255, 0.15);
+    @apply bg-card/80 backdrop-blur-sm border border-border/50;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
   }
 
   .glass-strong {
-    @apply bg-white/10 backdrop-blur-2xl border border-white/20;
-    box-shadow: 0 8px 32px 0 rgba(120, 80, 255, 0.25);
+    @apply bg-card backdrop-blur-sm border border-border;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
   }
 
-  /* Gradient text */
+  /* Orange gradient text matching reference */
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(270, 60%, 60%), hsl(200, 80%, 55%));
+    background-image: linear-gradient(135deg, hsl(16, 100%, 50%), hsl(25, 100%, 55%));
   }
 
   .gradient-text-accent {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(165, 75%, 50%), hsl(145, 75%, 45%));
+    background-image: linear-gradient(135deg, hsl(16, 100%, 50%), hsl(35, 100%, 60%));
   }
 
-  /* Glow effects */
+  /* Orange glow effects */
   .glow-primary {
-    box-shadow: 0 0 30px rgba(147, 112, 219, 0.4), 0 0 60px rgba(147, 112, 219, 0.2);
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3), 0 0 40px rgba(255, 69, 0, 0.15);
   }
 
   .glow-accent {
-    box-shadow: 0 0 30px rgba(64, 224, 208, 0.4), 0 0 60px rgba(64, 224, 208, 0.2);
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.4), 0 0 40px rgba(255, 69, 0, 0.2);
   }
 
   /* Smooth transitions */
   .transition-smooth {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Modern button gradients */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(16, 100%, 50%), hsl(25, 100%, 55%));
+  }
+
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, hsl(16, 100%, 50%), hsl(35, 100%, 60%));
   }
 }
 
